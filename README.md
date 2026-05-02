@@ -37,6 +37,12 @@ npm run start
 npm run dev
 ```
 
+## Testes
+
+```bash
+npm test
+```
+
 ## Endpoints
 
 - `GET /health`: healthcheck

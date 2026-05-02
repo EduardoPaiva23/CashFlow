@@ -9,6 +9,8 @@ function httpError(status, message) {
 function validateCredentials({ name, email, password }, { requireName }) {
   if (requireName && !name) throw httpError(400, "name is required");
   if (!email) throw httpError(400, "email is required");
+  // Basic format validation (CAF-1)
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) throw httpError(400, "email is invalid");
   if (!password) throw httpError(400, "password is required");
   if (String(password).length < 8) throw httpError(400, "password must be at least 8 characters");
 }
