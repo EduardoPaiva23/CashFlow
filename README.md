@@ -42,11 +42,13 @@ npm run dev
 - `GET /health`: healthcheck
 - `GET /docs`: Swagger UI
 
-### Auth
+### Auth (conforme Jira)
 
-- `POST /auth/register`: cria usuário
-- `POST /auth/login`: autentica e retorna JWT
+- `POST /users`: cria usuário (CAF-1)
+- `POST /sessions`: autentica e retorna JWT (CAF-2)
 - `GET /me`: rota protegida, retorna o usuário autenticado
+- `POST /transactions`: rota protegida, registra receita/despesa (CAF-3)
+- `GET /summary`: rota protegida, saldo/resumo (CAF-4)
 
 ## Estrutura de pastas
 

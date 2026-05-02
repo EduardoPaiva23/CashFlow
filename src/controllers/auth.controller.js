@@ -10,7 +10,7 @@ function validateCredentials({ name, email, password }, { requireName }) {
   if (requireName && !name) throw httpError(400, "name is required");
   if (!email) throw httpError(400, "email is required");
   if (!password) throw httpError(400, "password is required");
-  if (String(password).length < 6) throw httpError(400, "password must be at least 6 characters");
+  if (String(password).length < 8) throw httpError(400, "password must be at least 8 characters");
 }
 
 const authController = {
