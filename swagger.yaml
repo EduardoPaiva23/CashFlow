@@ -66,6 +66,55 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '401':
           description: Credenciais inválidas
+  /auth/register:
+    post:
+      summary: (Deprecated) Registrar usuário
+      description: Endpoint legado. Use `POST /users`.
+      deprecated: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+      responses:
+        '201':
+          description: Usuário criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '409':
+          description: Email já cadastrado
+  /auth/login:
+    post:
+      summary: (Deprecated) Login (JWT)
+      description: Endpoint legado. Use `POST /sessions`.
+      deprecated: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        '200':
+          description: Autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Credenciais inválidas
   /transactions:
     post:
       summary: Registrar transação (income/expense)
